@@ -1,12 +1,38 @@
-from kivy.app import App
-from kivy.uix.button import Button
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
+public class TooltipEx extends Application {
 
-class learn(App):
-	def build(self):
-		return Button(text = "Hello", pos = (100,500), size =(100,100), size_hint = (0.1,0.1))
+    @Override
+    public void start(Stage stage) {
 
+        initUI(stage);
+    }
 
-if __name__ == "__main__":
-	learn().run()
-	print("hello")
+    private void initUI(Stage stage) {
+
+        var root = new HBox();
+        root.setPadding(new Insets(20));
+
+        var btn = new Button("Button");
+        var tooltip = new Tooltip("Button control");
+        Tooltip.install(btn, tooltip);
+
+        root.getChildren().add(btn);
+
+        var scene = new Scene(root, 300, 250);
+
+        stage.setTitle("Tooltip");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
