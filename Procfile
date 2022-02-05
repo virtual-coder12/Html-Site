@@ -1,1 +1,1 @@
-worker: python k.py
+web: java -jar
